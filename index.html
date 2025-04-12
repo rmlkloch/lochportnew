@@ -1189,14 +1189,15 @@
                 </div>
                 <div class="contact-form-container gsap-reveal-from-right" data-gsap-delay="0.3">
                     <h3 class="text-xl lg:text-2xl font-semibold mb-8 text-white">Send a Message</h3>
-                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <!-- Netlify required hidden input -->
-                        <input type="hidden" name="form-name" value="contact">
-                
-                        <!-- Honeypot field for spam bots -->
-                        <p style="display:none">
-                            <label>Don’t fill this out: <input name="bot-field" /></label>
-                        </p>
+                    <form action="https://formsubmit.co/rmlkranathunga@gmail.com" method="POST">
+                        <!-- Honeypot field (anti-spam) -->
+                        <input type="text" name="_honey" style="display:none">
+                        
+                        <!-- Disable CAPTCHA -->
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <!-- Redirect to thank you page -->
+                        <input type="hidden" name="_next" value="https://rmlkloch.github.io/lochportnew/thank-you.html">
                 
                         <div class="mb-5">
                             <label for="contact-name" class="block text-sm font-medium mb-2 text-gray-400">Name</label>
