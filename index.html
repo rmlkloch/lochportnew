@@ -42,13 +42,23 @@
             background-color: var(--background-color);
             color: var(--text-color);
             overflow-x: hidden;
-             /* ADDED: Custom Cursor - Hide default */
+            /* ADDED: Custom Cursor - Hide default */
             cursor: none;
         }
 
         /* ADDED: Links and buttons should show interaction for custom cursor */
-        a, button, .btn, .project-card, .social-icon-link, .navbar-brand, input, textarea, #menu-toggle, #close-menu-btn {
-             cursor: none; /* Ensure cursor is hidden over interactive elements too */
+        a,
+        button,
+        .btn,
+        .project-card,
+        .social-icon-link,
+        .navbar-brand,
+        input,
+        textarea,
+        #menu-toggle,
+        #close-menu-btn {
+            cursor: none;
+            /* Ensure cursor is hidden over interactive elements too */
         }
 
 
@@ -124,7 +134,8 @@
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            /* cursor: pointer; */ /* Removed for custom cursor */
+            /* cursor: pointer; */
+            /* Removed for custom cursor */
             transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
             text-align: center;
             position: relative;
@@ -347,7 +358,8 @@
             align-items: center;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0s ease 0.4s, transform 0.4s ease; /* Delay visibility change */
+            transition: opacity 0.4s ease, visibility 0s ease 0.4s, transform 0.4s ease;
+            /* Delay visibility change */
             transform: translateY(-20px);
         }
 
@@ -355,7 +367,8 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
-            transition: opacity 0.4s ease, visibility 0s ease 0s, transform 0.4s ease; /* Remove visibility delay when opening */
+            transition: opacity 0.4s ease, visibility 0s ease 0s, transform 0.4s ease;
+            /* Remove visibility delay when opening */
         }
 
 
@@ -381,7 +394,8 @@
             background: none;
             border: none;
             color: var(--text-color);
-            /* cursor: pointer; */ /* Removed for custom cursor */
+            /* cursor: pointer; */
+            /* Removed for custom cursor */
             padding: 0.5rem;
             z-index: 1001;
         }
@@ -474,9 +488,11 @@
         /* Project Content - Updated from previous response to ensure alignment */
         .project-content {
             padding: 1.75rem;
-            flex-grow: 1; /* Allow content to grow */
+            flex-grow: 1;
+            /* Allow content to grow */
             display: flex;
-            flex-direction: column; /* Stack items vertically */
+            flex-direction: column;
+            /* Stack items vertically */
         }
 
 
@@ -491,25 +507,30 @@
             color: var(--text-muted-color);
             font-size: 0.95rem;
             line-height: 1.6;
-             /* Removed flex-grow: 1; from p to prevent it pushing tags down too much */
+            /* Removed flex-grow: 1; from p to prevent it pushing tags down too much */
             margin-bottom: 1rem;
         }
 
         /* Project Tags - Updated from previous response */
         .project-tags {
-            margin-top: auto; /* Push tags down */
+            margin-top: auto;
+            /* Push tags down */
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem; /* Original gap was likely gap-2, approx 0.5rem */
-            margin-bottom: 1rem; /* mb-4 */
-            justify-content: center; /* Center tags */
+            gap: 0.5rem;
+            /* Original gap was likely gap-2, approx 0.5rem */
+            margin-bottom: 1rem;
+            /* mb-4 */
+            justify-content: center;
+            /* Center tags */
         }
 
 
         .project-tags span {
             background-color: #252525;
             color: #aaa;
-            font-size: 0.7rem; /* text-xs */
+            font-size: 0.7rem;
+            /* text-xs */
             padding: 0.3rem 0.8rem;
             border-radius: 999px;
             border: 1px solid #333;
@@ -526,10 +547,13 @@
 
         .project-links {
             display: flex;
-            justify-content: space-between; /* Keeps links apart */
+            justify-content: space-between;
+            /* Keeps links apart */
             align-items: center;
-            /* margin-top: auto; */ /* Removed: Tags section now handles pushing down */
-            padding-top: 1rem; /* Add space above links */
+            /* margin-top: auto; */
+            /* Removed: Tags section now handles pushing down */
+            padding-top: 1rem;
+            /* Add space above links */
             border-top: 1px solid var(--border-color);
         }
 
@@ -822,7 +846,8 @@
 
 
             #skills .grid {
-                gap: 3rem; /* Keep the gap */
+                gap: 3rem;
+                /* Keep the gap */
             }
 
             #skills .skill-bars-column {
@@ -847,7 +872,8 @@
                 margin-top: 3rem;
             }
 
-            footer .flex { /* This targets the footer content if it uses flex */
+            footer .flex {
+                /* This targets the footer content if it uses flex */
                 flex-direction: column;
                 text-align: center;
                 gap: 1rem;
@@ -860,33 +886,42 @@
             width: 10px;
             height: 10px;
         }
+
         html::-webkit-scrollbar-track {
             background: var(--card-bg);
             border-radius: 5px;
         }
+
         html::-webkit-scrollbar-thumb {
             background-color: var(--text-muted-color);
             border-radius: 5px;
             border: 2px solid var(--card-bg);
         }
+
         html::-webkit-scrollbar-thumb:hover {
             background-color: var(--primary-color);
         }
+
         /* Target specific divs if needed, e.g., for textareas */
         textarea::-webkit-scrollbar {
             width: 8px;
         }
+
         textarea::-webkit-scrollbar-track {
-            background: #1f1f1f; /* Slightly different track for textarea */
+            background: #1f1f1f;
+            /* Slightly different track for textarea */
         }
+
         textarea::-webkit-scrollbar-thumb {
             background-color: #666;
             border-radius: 4px;
             border: 1px solid #1f1f1f;
         }
+
         textarea::-webkit-scrollbar-thumb:hover {
             background-color: var(--secondary-color);
         }
+
         /* Also style textarea for Firefox standard */
         textarea {
             scrollbar-width: thin;
@@ -895,52 +930,80 @@
 
 
         /* --- ADDED: Custom Cursor Styles --- */
-        #custom-cursor, #cursor-aura {
+        #custom-cursor,
+        #cursor-aura {
             position: fixed;
             top: 0;
             left: 0;
             border-radius: 50%;
-            pointer-events: none; /* Crucial: allows clicking through */
-            transform: translate(-50%, -50%); /* Center on actual mouse position */
+            pointer-events: none;
+            /* Crucial: allows clicking through */
+            transform: translate(-50%, -50%);
+            /* Center on actual mouse position */
             transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
-            z-index: 10001; /* Above navbar and mobile menu */
+            z-index: 10001;
+            /* Above navbar and mobile menu */
             opacity: 1;
         }
+
         #custom-cursor {
             width: 10px;
             height: 10px;
             background-color: var(--primary-color);
         }
+
         #cursor-aura {
             width: 40px;
             height: 40px;
             border: 4px solid hsla(var(--primary-hue), 100%, 68%, 0.5);
         }
+
         /* Hover state for interactive elements */
         body.cursor-hover #custom-cursor {
-            transform: translate(-50%, -50%) scale(0.5); /* Make inner dot smaller */
+            transform: translate(-50%, -50%) scale(0.5);
+            /* Make inner dot smaller */
             background-color: var(--secondary-color);
         }
+
         body.cursor-hover #cursor-aura {
-            transform: translate(-50%, -50%) scale(1.3); /* Expand aura */
+            transform: translate(-50%, -50%) scale(1.3);
+            /* Expand aura */
             border-color: hsla(var(--secondary-hue), 98%, 73%, 0.7);
             opacity: 0.7;
         }
-        /* Hide custom cursor on touch devices */
-         @media (hover: none), (pointer: coarse) { /* Added coarse pointer check */
-             #custom-cursor, #cursor-aura {
-                 display: none !important;
-                 visibility: hidden; /* Ensure it's hidden */
-             }
-             body, a, button, .btn, .project-card, .social-icon-link, .navbar-brand, input, textarea, #menu-toggle, #close-menu-btn {
-                 cursor: revert; /* Restore default/inherited cursors */
-             }
-         }
 
+        /* Hide custom cursor on touch devices */
+        @media (hover: none),
+        (pointer: coarse) {
+
+            /* Added coarse pointer check */
+            #custom-cursor,
+            #cursor-aura {
+                display: none !important;
+                visibility: hidden;
+                /* Ensure it's hidden */
+            }
+
+            body,
+            a,
+            button,
+            .btn,
+            .project-card,
+            .social-icon-link,
+            .navbar-brand,
+            input,
+            textarea,
+            #menu-toggle,
+            #close-menu-btn {
+                cursor: revert;
+                /* Restore default/inherited cursors */
+            }
+        }
     </style>
 </head>
 
-<body class="antialiased"> <div id="loader" class="loader">
+<body class="antialiased">
+    <div id="loader" class="loader">
         <div class="loader-content">Loading ...</div>
         <div class="loader-bar-container mt-4">
             <div class="loader-bar">
@@ -958,7 +1021,8 @@
     <nav id="navbar" class="navbar">
         <div class="content-wrapper">
             <div class="flex justify-between items-center">
-                <a href="#home" title="Lochana Ranathunga - Home" class="navbar-brand"> <div class="logo-initials">LR</div>
+                <a href="#home" title="Lochana Ranathunga - Home" class="navbar-brand">
+                    <div class="logo-initials">LR</div>
                     <span class="logo-name">Loch</span>
                 </a>
 
@@ -971,7 +1035,8 @@
                         class="btn ml-4 text-sm py-2 px-5 transform hover:scale-105"> Hire Me </a>
                 </div>
 
-                <button class="md:hidden block text-white" id="menu-toggle" aria-label="Toggle Menu"> <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                <button class="md:hidden block text-white" id="menu-toggle" aria-label="Toggle Menu"> <svg
+                        xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
@@ -981,8 +1046,8 @@
     </nav>
 
     <div id="mobile-menu-container">
-        <button id="close-menu-btn" aria-label="Close Menu"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                stroke="currentColor" class="w-8 h-8">
+        <button id="close-menu-btn" aria-label="Close Menu"> <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
@@ -999,8 +1064,10 @@
             <h1 class="gsap-reveal-from-bottom">LOCHANA RANATHUNGA</h1>
             <h2 class="gsap-reveal-from-bottom" data-gsap-delay="0.2">Digital Craftsman & Creative Technologist</h2>
             <div class="hero-buttons mt-10 gsap-reveal-from-bottom" data-gsap-delay="0.4">
-                <a href="#projects" class="btn">Explore My Work</a> <a href="https://nsbm365-my.sharepoint.com/:b:/g/personal/rmlkranathunga_students_nsbm_ac_lk/ESSP0b92YCtJo_iV6__8zs0BXOba4WzrbCpizCpiSScAoQ?e=JQcjGe"
-                    target="_blank" class="btn btn-secondary">View Resume</a> </div>
+                <a href="#projects" class="btn">Explore My Work</a> <a
+                    href="https://nsbm365-my.sharepoint.com/:b:/g/personal/rmlkranathunga_students_nsbm_ac_lk/ESSP0b92YCtJo_iV6__8zs0BXOba4WzrbCpizCpiSScAoQ?e=JQcjGe"
+                    target="_blank" class="btn btn-secondary">View Resume</a>
+            </div>
         </div>
     </section>
 
@@ -1020,7 +1087,8 @@
                         applications, and HTML/CSS/JS for dynamic interfaces. I excel at translating ideas into
                         functional designs. Club involvement sharpened my leadership and collaborative skills. I thrive
                         on tackling complex problems and pushing technological boundaries.</p>
-                    <a href="#contact" class="btn mt-4">Let's Collaborate</a> </div>
+                    <a href="#contact" class="btn mt-4">Let's Collaborate</a>
+                </div>
                 <div class="gsap-reveal-from-right" data-gsap-delay="0.3">
                     <div
                         class="bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-gray-700 aspect-square max-w-md mx-auto flex items-center justify-center">
@@ -1032,99 +1100,108 @@
     </section>
 
     <section id="projects" class="section" style="background-color: rgba(14, 14, 14, 0.6);">
-         <div class="content-wrapper"> <h2 class="section-heading gsap-reveal-from-bottom">Featured Projects</h2> <p class="section-subheading gsap-reveal-from-bottom" data-gsap-delay="0.2">A selection of
-                 recent work showcasing my passion for interactive development.</p> <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="content-wrapper">
+            <h2 class="section-heading gsap-reveal-from-bottom">Featured Projects</h2>
+            <p class="section-subheading gsap-reveal-from-bottom" data-gsap-delay="0.2">A selection of
+                recent work showcasing my passion for interactive development.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                 <div class="project-card gsap-reveal-scale"> <div class="project-img-container">
-                         <img src="portfolio web.png" alt="Project 1" class="project-img w-full object-cover"> </div>
-                     <div class="project-content flex flex-col h-full">
-                         <h3>Personal Portfolio</h3>
-                         <p class="text-sm">A sleek, responsive portfolio website designed to showcase projects and
-                             skills. Includes interactive project sections, smooth animations, and contact form
-                             integration. Built with HTML, CSS, JavaScript, and Tailwind CSS for a clean, modern UI</p>
-                         <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center"> <span>html</span><span>css</span><span>js</span>
-                         </div>
-                         <div class="project-links">
-                             <a href="https://rmlkloch.github.io/Portfolio25/" target="_blank"
-                                 rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                     </path>
-                                 </svg></a>
-                             <a href="https://github.com/rmlkloch/Portfolio25.git" target="_blank"
-                                 rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
-                                     </path>
-                                 </svg></a>
-                         </div>
-                     </div>
-                 </div>
+                <div class="project-card gsap-reveal-scale">
+                    <div class="project-img-container">
+                        <img src="portfolio web.png" alt="Project 1" class="project-img w-full object-cover">
+                    </div>
+                    <div class="project-content flex flex-col h-full">
+                        <h3>Personal Portfolio</h3>
+                        <p class="text-sm">A sleek, responsive portfolio website designed to showcase projects and
+                            skills. Includes interactive project sections, smooth animations, and contact form
+                            integration. Built with HTML, CSS, JavaScript, and Tailwind CSS for a clean, modern UI</p>
+                        <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center">
+                            <span>html</span><span>css</span><span>js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rmlkloch.github.io/Portfolio25/" target="_blank"
+                                rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg></a>
+                            <a href="https://github.com/rmlkloch/Portfolio25.git" target="_blank"
+                                rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
+                                    </path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
 
-                 <div class="project-card gsap-reveal-scale" data-gsap-delay="0.15">
-                     <div class="project-img-container">
-                         <img src="cafe.png" alt="Project 2" class="project-img w-full object-cover">
-                     </div>
-                      <div class="project-content flex flex-col h-full">
-                         <h3>Cafe Full-Stack Website</h3>
-                         <p class="text-sm">A complete, responsive cafe website built for a seamless dining experience.
-                             Features include an interactive menu, online ordering, and contact forms. Developed with
-                             HTML, CSS, JavaScript, and Node.js for dynamic functionality.</p>
-                         <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center"> <span>HTML</span><span>js</span><span>php</span>
-                         </div>
-                         <div class="project-links">
-                             <a href="https://rmlkloch.github.io/coffeeweb/" target="_blank"
-                                 rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                     </path>
-                                 </svg></a>
-                             <a href="https://github.com/rmlkloch/coffeeweb.git" target="_blank"
-                                 rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
-                                     </path>
-                                 </svg></a>
-                         </div>
-                     </div>
-                 </div>
+                <div class="project-card gsap-reveal-scale" data-gsap-delay="0.15">
+                    <div class="project-img-container">
+                        <img src="cafe.png" alt="Project 2" class="project-img w-full object-cover">
+                    </div>
+                    <div class="project-content flex flex-col h-full">
+                        <h3>Cafe Full-Stack Website</h3>
+                        <p class="text-sm">A complete, responsive cafe website built for a seamless dining experience.
+                            Features include an interactive menu, online ordering, and contact forms. Developed with
+                            HTML, CSS, JavaScript, and Node.js for dynamic functionality.</p>
+                        <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center">
+                            <span>HTML</span><span>js</span><span>php</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rmlkloch.github.io/coffeeweb/" target="_blank"
+                                rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg></a>
+                            <a href="https://github.com/rmlkloch/coffeeweb.git" target="_blank"
+                                rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
+                                    </path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
 
-                 <div class="project-card gsap-reveal-scale" data-gsap-delay="0.15">
-                     <div class="project-img-container">
-                         <img src="ecommerce.png" alt="Project 3" class="project-img w-full object-cover"> </div>
-                      <div class="project-content flex flex-col h-full">
-                         <h3>e-commerce frontend</h3>
-                         <p class="text-sm">I craft fully responsive, visually appealing e-commerce websites tailored to
-                             your brand. Using modern frontend tools, I ensure smooth navigation and a seamless shopping
-                             experience.</p>
-                         <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center"> <span>next.js</span><span>tailwind</span><span>js</span>
-                         </div>
-                         <div class="project-links">
-                              <a href="https://rmlkloch.github.io/coffeeweb/" target="_blank"
-                                 rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                     </path>
-                                 </svg></a>
-                             <a href="https://github.com/rmlkloch/coffeeweb.git" target="_blank"
-                                 rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
-                                     </path>
-                                 </svg></a>
-                         </div>
-                     </div>
-                 </div>
+                <div class="project-card gsap-reveal-scale" data-gsap-delay="0.15">
+                    <div class="project-img-container">
+                        <img src="ecommerce.png" alt="Project 3" class="project-img w-full object-cover">
+                    </div>
+                    <div class="project-content flex flex-col h-full">
+                        <h3>e-commerce frontend</h3>
+                        <p class="text-sm">I craft fully responsive, visually appealing e-commerce websites tailored to
+                            your brand. Using modern frontend tools, I ensure smooth navigation and a seamless shopping
+                            experience.</p>
+                        <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center">
+                            <span>next.js</span><span>tailwind</span><span>js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rmlkloch.github.io/coffeeweb/" target="_blank"
+                                rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg></a>
+                            <a href="https://github.com/rmlkloch/coffeeweb.git" target="_blank"
+                                rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
+                                    </path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
 
-             </div>
-         </div>
-     </section>
+            </div>
+        </div>
+    </section>
 
 
     <section id="skills" class="section">
@@ -1271,21 +1348,26 @@
                         <div class="social-icon-links">
                             <a href="https://www.linkedin.com/in/lochana-ranathunga-9972b023a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                                 target="_blank" rel="noopener noreferrer" class="social-icon-link"
-                                aria-label="Lochana Ranathunga on LinkedIn"> <svg role="img" viewBox="0 0 24 24"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                aria-label="Lochana Ranathunga on LinkedIn">
+                                <svg role="img" viewBox="0 0 24 24" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
                                     <title>LinkedIn</title>
                                     <path
                                         d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z">
                                     </path>
-                                </svg> </a>
+                                </svg>
+                            </a>
                             <a href="https://www.instagram.com/_rmlk_ranathunga_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                                 target="_blank" rel="noopener noreferrer" class="social-icon-link"
-                                aria-label="Lochana Ranathunga on Instagram"> <svg xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                                aria-label="Lochana Ranathunga on Instagram">
+                                <svg role="img" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <title>Instagram</title>
                                     <path
                                         d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.88a.88.88 0 1 1 0 1.76.88.88 0 0 1 0-1.76z" />
                                 </svg>
-                                </a> <a href="https://www.facebook.com/share/15bw5Kv9ho/" target="_blank"
+                            </a>
+                            <a href="https://www.facebook.com/share/15bw5Kv9ho/" target="_blank"
                                 rel="noopener noreferrer" class="social-icon-link"
                                 aria-label="Lochana Ranathunga on Facebook"> <svg role="img" viewBox="0 0 24 24"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -1315,7 +1397,8 @@
 
                     <div class="mt-10 gsap-reveal-from-bottom" data-gsap-delay="0.6">
                         <a href="https://www.fiverr.com/tourforyourpc/" target="_blank" rel="noopener noreferrer"
-                            class="btn inline-block w-full sm:w-auto text-center text-base py-3 transform hover:scale-105"> Hire Me on Fiverr! </a>
+                            class="btn inline-block w-full sm:w-auto text-center text-base py-3 transform hover:scale-105">
+                            Hire Me on Fiverr! </a>
                     </div>
 
                 </div>
@@ -1326,21 +1409,26 @@
 
                         <input type="hidden" name="_captcha" value="false">
 
-                        <input type="hidden" name="_next" value="https://rmlkloch.github.io/lochportnew/thank-you.html"> <div class="mb-5">
+                        <input type="hidden" name="_next" value="https://rmlkloch.github.io/lochportnew/thank-you.html">
+                        <div class="mb-5">
                             <label for="contact-name" class="block text-sm font-medium mb-2 text-gray-400">Name</label>
                             <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your Name"
-                                required> </div>
+                                required>
+                        </div>
                         <div class="mb-5">
                             <label for="contact-email"
                                 class="block text-sm font-medium mb-2 text-gray-400">Email</label>
                             <input type="email" id="contact-email" name="email" class="form-input"
-                                placeholder="Your Email" required> </div>
+                                placeholder="Your Email" required>
+                        </div>
                         <div class="mb-5">
                             <label for="contact-message"
                                 class="block text-sm font-medium mb-2 text-gray-400">Message</label>
                             <textarea id="contact-message" name="message" rows="5" class="form-textarea"
-                                placeholder="How can I help?" required></textarea> </div>
-                        <button type="submit" class="btn w-full">Send Message</button> </form>
+                                placeholder="How can I help?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn w-full">Send Message</button>
+                    </form>
                     <div id="form-status-message" class="mt-4 text-center"></div>
                 </div>
 
@@ -1433,8 +1521,8 @@
                 }, 1500);
             }
 
-             // --- ADDED: Custom Cursor Logic ---
-             function initCustomCursor() {
+            // --- ADDED: Custom Cursor Logic ---
+            function initCustomCursor() {
                 const customCursor = document.getElementById('custom-cursor');
                 const cursorAura = document.getElementById('cursor-aura');
 
@@ -1443,7 +1531,7 @@
                     document.body.style.cursor = 'auto'; // Restore default if elements missing
                     // Select interactive elements based on original HTML structure if needed for revert
                     document.querySelectorAll('a, button, .btn, .project-card, .social-icon-link, .navbar-brand, input, textarea, #menu-toggle, #close-menu-btn')
-                         .forEach(el => el.style.cursor = 'revert');
+                        .forEach(el => el.style.cursor = 'revert');
                     return;
                 }
 
@@ -1472,12 +1560,12 @@
                 requestAnimationFrame(updateCursor);
 
                 // Original structure might need specific targets if .cursor-target class wasn't used
-                 const cursorTargets = document.querySelectorAll('a[href], button, .btn, input, textarea, .project-card, .social-icon-link, .navbar-brand, #menu-toggle, #close-menu-btn'); // Select potentially interactive elements
+                const cursorTargets = document.querySelectorAll('a[href], button, .btn, input, textarea, .project-card, .social-icon-link, .navbar-brand, #menu-toggle, #close-menu-btn'); // Select potentially interactive elements
                 cursorTargets.forEach(target => {
                     target.addEventListener('mouseenter', () => { document.body.classList.add('cursor-hover'); });
                     target.addEventListener('mouseleave', () => { document.body.classList.remove('cursor-hover'); });
                 });
-                 console.log(`Custom cursor hover listeners added.`);
+                console.log(`Custom cursor hover listeners added.`);
             }
 
 
@@ -1513,7 +1601,7 @@
                 console.log("No loader found, initializing directly.");
                 document.body.style.overflowY = 'auto';
                 // Use requestAnimationFrame for potentially smoother start after render
-                 requestAnimationFrame(initializePageScripts);
+                requestAnimationFrame(initializePageScripts);
             }
 
             // --- GSAP / ScrollTrigger Setup (Original) ---
@@ -1556,12 +1644,12 @@
                     });
                     const currentMobileLinks = mobileMenuContainer.querySelectorAll('a.nav-link'); // Ensure links are selected here
                     if (currentMobileLinks.length > 0) {
-                         currentMobileLinks.forEach(link => {
+                        currentMobileLinks.forEach(link => {
                             link.addEventListener('click', () => {
                                 mobileMenuContainer.classList.remove('open');
                                 if (lenis) lenis.start();
                             });
-                         });
+                        });
                     }
                     console.log("Mobile menu listeners attached.");
                 } else { console.error("Mobile menu elements not found:", { menuToggle, mobileMenuContainer, closeMenuBtn }); }
@@ -1587,11 +1675,11 @@
                 }, 300);
             }
             // Modified setActiveLink to accept link lists
-             function setActiveLink(sectionId, desktopLinks, mobileLinks) {
-                 const targetHref = `#${sectionId}`;
-                 desktopLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === targetHref); });
-                 mobileLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === targetHref); });
-             }
+            function setActiveLink(sectionId, desktopLinks, mobileLinks) {
+                const targetHref = `#${sectionId}`;
+                desktopLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === targetHref); });
+                mobileLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === targetHref); });
+            }
 
 
             // --- Hero Text Animation (Original) ---
@@ -1613,36 +1701,36 @@
             }
 
             // --- Animate Skill Bars (Original) ---
-             function animateSkillBars() {
-                 if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-                 const skillProgressBars = document.querySelectorAll('.skill-progress');
-                 if (skillProgressBars.length === 0) { console.warn("No skill bars found."); return; }
-                 skillProgressBars.forEach(bar => {
-                     const targetWidth = bar.dataset.width || '0';
-                     gsap.to(bar, {
-                         width: `${targetWidth}%`,
-                         duration: 1.8,
-                         ease: 'cubic-bezier(0.19, 1, 0.22, 1)',
-                         scrollTrigger: {
-                             trigger: bar.closest('.skill-bar-container'),
-                             start: "top 85%",
-                             once: true
-                         }
-                     });
-                 });
-                 console.log("Skill bar animations initialized.");
-             }
+            function animateSkillBars() {
+                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+                const skillProgressBars = document.querySelectorAll('.skill-progress');
+                if (skillProgressBars.length === 0) { console.warn("No skill bars found."); return; }
+                skillProgressBars.forEach(bar => {
+                    const targetWidth = bar.dataset.width || '0';
+                    gsap.to(bar, {
+                        width: `${targetWidth}%`,
+                        duration: 1.8,
+                        ease: 'cubic-bezier(0.19, 1, 0.22, 1)',
+                        scrollTrigger: {
+                            trigger: bar.closest('.skill-bar-container'),
+                            start: "top 85%",
+                            once: true
+                        }
+                    });
+                });
+                console.log("Skill bar animations initialized.");
+            }
 
             // --- Original Three.js Particle Scene ---
-             function initThreeJsScene() {
-                 if (typeof THREE === 'undefined') { console.error("THREE library not loaded!"); return; }
-                 console.log("Attempting to initialize Three.js scene (original particle system)...");
-                 const container = document.getElementById('three-canvas-container');
-                 if (!container) { console.error("Three.js container '#three-canvas-container' not found!"); return; }
-                 let canvas = container.querySelector('canvas');
-                 if (canvas) { console.log("Removing existing canvas before re-init."); container.removeChild(canvas); }
+            function initThreeJsScene() {
+                if (typeof THREE === 'undefined') { console.error("THREE library not loaded!"); return; }
+                console.log("Attempting to initialize Three.js scene (original particle system)...");
+                const container = document.getElementById('three-canvas-container');
+                if (!container) { console.error("Three.js container '#three-canvas-container' not found!"); return; }
+                let canvas = container.querySelector('canvas');
+                if (canvas) { console.log("Removing existing canvas before re-init."); container.removeChild(canvas); }
 
-                 try {
+                try {
                     const scene = new THREE.Scene();
                     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                     camera.position.z = 50;
@@ -1658,12 +1746,12 @@
                     for (let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * spread; } // Use original spread
                     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
                     const particlesMaterial = new THREE.PointsMaterial({
-                         size: 0.19, // Original size
-                         color: 0xc48f8f, // Original color
-                         transparent: true,
-                         // opacity: 0.8, // Opacity wasn't in original, removed
-                         // blending: THREE.AdditiveBlending // Blending wasn't in original, removed
-                         });
+                        size: 0.19, // Original size
+                        color: 0xc48f8f, // Original color
+                        transparent: true,
+                        // opacity: 0.8, // Opacity wasn't in original, removed
+                        // blending: THREE.AdditiveBlending // Blending wasn't in original, removed
+                    });
                     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
                     scene.add(particlesMesh);
 
@@ -1685,8 +1773,8 @@
                     window.addEventListener('resize', onWindowResize);
                     animate();
                     console.log("Original Three.js particle system initialized successfully.");
-                 } catch (error) { console.error("Error initializing Three.js:", error); if (container) container.style.display = 'none'; }
-             }
+                } catch (error) { console.error("Error initializing Three.js:", error); if (container) container.style.display = 'none'; }
+            }
 
 
             // --- Footer Current Year (Original) ---
@@ -1703,26 +1791,26 @@
                 }
 
                 const urlParams = new URLSearchParams(window.location.search);
-                 // Check for a specific parameter potentially added by formsubmit or previous redirect logic
-                 const status = urlParams.get('form_status') || urlParams.get('status'); // Check common params
-                 const msg = urlParams.get('msg');
+                // Check for a specific parameter potentially added by formsubmit or previous redirect logic
+                const status = urlParams.get('form_status') || urlParams.get('status'); // Check common params
+                const msg = urlParams.get('msg');
 
-                 let messageText = '';
-                 let messageClass = '';
+                let messageText = '';
+                let messageClass = '';
 
-                 // Check if the current URL *is* the thank you page URL from the form redirect
-                 // This is a less reliable check as params might be added for other reasons.
-                 const expectedThankYouPath = "/lochportnew/thank-you.html"; // Adjust if needed
-                 if (window.location.pathname.endsWith(expectedThankYouPath) || status === 'success') {
-                     messageText = 'Message sent successfully! Thank you.';
-                     messageClass = 'text-green-400'; // Use a visible green
-                 } else if (status === 'error') {
-                     messageText = msg ? decodeURIComponent(msg.replace(/\+/g, ' ')) : 'An unexpected error occurred.';
-                     messageClass = 'text-red-500';
-                 } else if (status === 'validation_error') {
-                     messageText = msg ? decodeURIComponent(msg.replace(/\+/g, ' ')) : 'Please check the form fields.';
-                     messageClass = 'text-yellow-500';
-                 }
+                // Check if the current URL *is* the thank you page URL from the form redirect
+                // This is a less reliable check as params might be added for other reasons.
+                const expectedThankYouPath = "/lochportnew/thank-you.html"; // Adjust if needed
+                if (window.location.pathname.endsWith(expectedThankYouPath) || status === 'success') {
+                    messageText = 'Message sent successfully! Thank you.';
+                    messageClass = 'text-green-400'; // Use a visible green
+                } else if (status === 'error') {
+                    messageText = msg ? decodeURIComponent(msg.replace(/\+/g, ' ')) : 'An unexpected error occurred.';
+                    messageClass = 'text-red-500';
+                } else if (status === 'validation_error') {
+                    messageText = msg ? decodeURIComponent(msg.replace(/\+/g, ' ')) : 'Please check the form fields.';
+                    messageClass = 'text-yellow-500';
+                }
 
 
                 if (messageText) {
@@ -1742,8 +1830,8 @@
                 }
             }
 
-             // Call form status handling (ensure it's called appropriately)
-             // Called within initializePageScripts
+            // Call form status handling (ensure it's called appropriately)
+            // Called within initializePageScripts
 
         }); // End DOMContentLoaded
     </script>
