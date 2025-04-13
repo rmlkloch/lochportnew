@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lochana Ranathunga | Creative Developer Portfolio</title>
-
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
     <style>
@@ -33,13 +33,24 @@
 
         html {
             scroll-behavior: smooth;
+            /* ADDED: Custom Scrollbar - Standard */
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-muted-color) var(--card-bg);
         }
 
         body {
             background-color: var(--background-color);
             color: var(--text-color);
             overflow-x: hidden;
+             /* ADDED: Custom Cursor - Hide default */
+            cursor: none;
         }
+
+        /* ADDED: Links and buttons should show interaction for custom cursor */
+        a, button, .btn, .project-card, .social-icon-link, .navbar-brand, input, textarea, #menu-toggle, #close-menu-btn {
+             cursor: none; /* Ensure cursor is hidden over interactive elements too */
+        }
+
 
         /* Global Styles */
         .content-wrapper {
@@ -113,7 +124,7 @@
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            cursor: pointer;
+            /* cursor: pointer; */ /* Removed for custom cursor */
             transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
             text-align: center;
             position: relative;
@@ -328,6 +339,7 @@
             height: 100%;
             background-color: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             z-index: 999;
             display: flex;
             flex-direction: column;
@@ -335,7 +347,7 @@
             align-items: center;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+            transition: opacity 0.4s ease, visibility 0s ease 0.4s, transform 0.4s ease; /* Delay visibility change */
             transform: translateY(-20px);
         }
 
@@ -343,7 +355,9 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            transition: opacity 0.4s ease, visibility 0s ease 0s, transform 0.4s ease; /* Remove visibility delay when opening */
         }
+
 
         #mobile-menu-container a {
             display: block;
@@ -360,13 +374,14 @@
         }
 
         #close-menu-btn {
+            display: none;
             position: absolute;
             top: 2rem;
             right: 5%;
             background: none;
             border: none;
             color: var(--text-color);
-            cursor: pointer;
+            /* cursor: pointer; */ /* Removed for custom cursor */
             padding: 0.5rem;
             z-index: 1001;
         }
@@ -447,7 +462,7 @@
         .project-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), filter 0.4s ease;
         }
 
@@ -456,12 +471,14 @@
             filter: brightness(0.9);
         }
 
+        /* Project Content - Updated from previous response to ensure alignment */
         .project-content {
             padding: 1.75rem;
-            flex-grow: 1;
+            flex-grow: 1; /* Allow content to grow */
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Stack items vertically */
         }
+
 
         .project-content h3 {
             color: #fff;
@@ -474,19 +491,30 @@
             color: var(--text-muted-color);
             font-size: 0.95rem;
             line-height: 1.6;
-            flex-grow: 1;
+             /* Removed flex-grow: 1; from p to prevent it pushing tags down too much */
             margin-bottom: 1rem;
         }
+
+        /* Project Tags - Updated from previous response */
+        .project-tags {
+            margin-top: auto; /* Push tags down */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem; /* Original gap was likely gap-2, approx 0.5rem */
+            margin-bottom: 1rem; /* mb-4 */
+            justify-content: center; /* Center tags */
+        }
+
 
         .project-tags span {
             background-color: #252525;
             color: #aaa;
-            font-size: 0.7rem;
+            font-size: 0.7rem; /* text-xs */
             padding: 0.3rem 0.8rem;
             border-radius: 999px;
             border: 1px solid #333;
             display: inline-block;
-            margin: 2px;
+            /* Removed margin: 2px; as gap handles spacing */
             transition: all 0.3s ease;
         }
 
@@ -498,12 +526,13 @@
 
         .project-links {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Keeps links apart */
             align-items: center;
-            margin-top: auto;
-            padding-top: 1rem;
+            /* margin-top: auto; */ /* Removed: Tags section now handles pushing down */
+            padding-top: 1rem; /* Add space above links */
             border-top: 1px solid var(--border-color);
         }
+
 
         .project-links a {
             color: var(--primary-color);
@@ -786,16 +815,14 @@
                 margin-bottom: 3rem;
             }
 
-            .md\:grid-cols-2 {
-                grid-template-columns: 1fr;
-            }
+            /* Ensure Tailwind's grid classes are respected */
+            /* .md\:grid-cols-2 { grid-template-columns: 1fr; } */
+            /* .lg\:grid-cols-3 { grid-template-columns: 1fr; } */
+            /* Note: Previous attempt might have overridden Tailwind. Keep Tailwind classes in HTML. */
 
-            .lg\:grid-cols-3 {
-                grid-template-columns: 1fr;
-            }
 
             #skills .grid {
-                gap: 3rem;
+                gap: 3rem; /* Keep the gap */
             }
 
             #skills .skill-bars-column {
@@ -820,19 +847,101 @@
                 margin-top: 3rem;
             }
 
-            footer .flex {
+            footer .flex { /* This targets the footer content if it uses flex */
                 flex-direction: column;
                 text-align: center;
                 gap: 1rem;
             }
         }
+
+        /* --- ADDED: Custom Scrollbar Styles --- */
+        /* WebKit browsers (Chrome, Safari, Edge, Opera) */
+        html::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        html::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 5px;
+        }
+        html::-webkit-scrollbar-thumb {
+            background-color: var(--text-muted-color);
+            border-radius: 5px;
+            border: 2px solid var(--card-bg);
+        }
+        html::-webkit-scrollbar-thumb:hover {
+            background-color: var(--primary-color);
+        }
+        /* Target specific divs if needed, e.g., for textareas */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #1f1f1f; /* Slightly different track for textarea */
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #666;
+            border-radius: 4px;
+            border: 1px solid #1f1f1f;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background-color: var(--secondary-color);
+        }
+        /* Also style textarea for Firefox standard */
+        textarea {
+            scrollbar-width: thin;
+            scrollbar-color: #666 #1f1f1f;
+        }
+
+
+        /* --- ADDED: Custom Cursor Styles --- */
+        #custom-cursor, #cursor-aura {
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            pointer-events: none; /* Crucial: allows clicking through */
+            transform: translate(-50%, -50%); /* Center on actual mouse position */
+            transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+            z-index: 10001; /* Above navbar and mobile menu */
+            opacity: 1;
+        }
+        #custom-cursor {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+        }
+        #cursor-aura {
+            width: 40px;
+            height: 40px;
+            border: 1px solid hsla(var(--primary-hue), 100%, 68%, 0.5);
+        }
+        /* Hover state for interactive elements */
+        body.cursor-hover #custom-cursor {
+            transform: translate(-50%, -50%) scale(0.5); /* Make inner dot smaller */
+            background-color: var(--secondary-color);
+        }
+        body.cursor-hover #cursor-aura {
+            transform: translate(-50%, -50%) scale(1.3); /* Expand aura */
+            border-color: hsla(var(--secondary-hue), 98%, 73%, 0.7);
+            opacity: 0.7;
+        }
+        /* Hide custom cursor on touch devices */
+         @media (hover: none), (pointer: coarse) { /* Added coarse pointer check */
+             #custom-cursor, #cursor-aura {
+                 display: none !important;
+                 visibility: hidden; /* Ensure it's hidden */
+             }
+             body, a, button, .btn, .project-card, .social-icon-link, .navbar-brand, input, textarea, #menu-toggle, #close-menu-btn {
+                 cursor: revert; /* Restore default/inherited cursors */
+             }
+         }
+
     </style>
 </head>
 
-<body class="antialiased">
-
-    <div id="loader" class="loader">
-        <div class="loader-content">Loading Creativity...</div>
+<body class="antialiased"> <div id="loader" class="loader">
+        <div class="loader-content">Loading ...</div>
         <div class="loader-bar-container mt-4">
             <div class="loader-bar">
                 <div id="loader-progress" class="loader-progress"></div>
@@ -840,45 +949,45 @@
         </div>
     </div>
 
+    <div id="custom-cursor"></div>
+    <div id="cursor-aura"></div>
+
     <div id="three-canvas-container">
     </div>
 
     <nav id="navbar" class="navbar">
         <div class="content-wrapper">
             <div class="flex justify-between items-center">
-                <a href="#home" title="Lochana Ranathunga - Home" class="navbar-brand">
-                    <div class="logo-initials">LR</div>
-                    <span class="logo-name">Lochana</span>
+                <a href="#home" title="Lochana Ranathunga - Home" class="navbar-brand"> <div class="logo-initials">LR</div>
+                    <span class="logo-name">Loch</span>
                 </a>
 
                 <div class="hidden md:flex items-center space-x-10">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#about" class="nav-link">About</a>
+                    <a href="#home" class="nav-link">Home</a> <a href="#about" class="nav-link">About</a>
                     <a href="#projects" class="nav-link">Projects</a>
                     <a href="#skills" class="nav-link">Skills</a>
                     <a href="#contact" class="nav-link">Contact</a>
-                    <a href="YOUR_FIVERR_URL_HERE" target="_blank" rel="noopener noreferrer"
-                       class="btn ml-4 text-sm py-2 px-5 transform hover:scale-105"> Hire Me
-                    </a>
-                    </div>
+                    <a href="https://www.fiverr.com/tourforyourpc/" target="_blank" rel="noopener noreferrer"
+                        class="btn ml-4 text-sm py-2 px-5 transform hover:scale-105"> Hire Me </a>
+                </div>
 
-                <button class="md:hidden block text-white" id="menu-toggle" aria-label="Toggle Menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                <button class="md:hidden block text-white" id="menu-toggle" aria-label="Toggle Menu"> <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
                 </button>
             </div>
         </div>
     </nav>
 
     <div id="mobile-menu-container">
-        <button id="close-menu-btn" aria-label="Close Menu">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+        <button id="close-menu-btn" aria-label="Close Menu"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                 stroke="currentColor" class="w-8 h-8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
         <div class="flex flex-col items-center space-y-6">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#about" class="nav-link">About</a>
+            <a href="#home" class="nav-link">Home</a> <a href="#about" class="nav-link">About</a>
             <a href="#projects" class="nav-link">Projects</a>
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#contact" class="nav-link">Contact</a>
@@ -890,9 +999,8 @@
             <h1 class="gsap-reveal-from-bottom">LOCHANA RANATHUNGA</h1>
             <h2 class="gsap-reveal-from-bottom" data-gsap-delay="0.2">Digital Craftsman & Creative Technologist</h2>
             <div class="hero-buttons mt-10 gsap-reveal-from-bottom" data-gsap-delay="0.4">
-                <a href="#projects" class="btn">Explore My Work</a>
-                <a href="#" target="_blank" class="btn btn-secondary">View Resume</a>
-            </div>
+                <a href="#projects" class="btn">Explore My Work</a> <a href="https://nsbm365-my.sharepoint.com/:b:/g/personal/rmlkranathunga_students_nsbm_ac_lk/ESSP0b92YCtJo_iV6__8zs0BXOba4WzrbCpizCpiSScAoQ?e=JQcjGe"
+                    target="_blank" class="btn btn-secondary">View Resume</a> </div>
         </div>
     </section>
 
@@ -904,21 +1012,19 @@
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="gsap-reveal-from-left">
                     <h3 class="text-2xl lg:text-3xl font-semibold mb-5 text-white">Hello! I'm Lochana Ranathunga,</h3>
-                    <p class="mb-4 text-lg leading-relaxed"> A passionate Creative Developer based in Colombo, Sri
-                        Lanka. I specialize in bringing concepts to life through interactive design and cutting-edge web
-                        technologies. My focus is on creating engaging user experiences that are both aesthetically
-                        pleasing and highly functional. </p>
-                    <p class="mb-6 text-lg leading-relaxed"> With a background that bridges the gap between design
-                        thinking and technical execution, I leverage tools like Three.js for immersive 3D visuals, GSAP
-                        for fluid animations, and the power of JavaScript to build dynamic interfaces. I thrive on
-                        challenges and enjoy collaborating on projects that push creative boundaries. </p>
-                    <a href="#contact" class="btn mt-4">Let's Collaborate</a>
-                </div>
+                    <p class="mb-4 text-lg leading-relaxed">A driven Data Science undergrad at NSBM Green University,
+                        Colombo. I blend data insights with web and Windows app development. Python, C#, and JavaScript
+                        fuel my projects. My organizing roles in CCCI, Nforce, and NCSC enhanced my teamwork and
+                        communication abilities, contributing to impactful solutions.</p>
+                    <p class="mb-6 text-lg leading-relaxed">My toolkit includes Python for data analysis, C# for robust
+                        applications, and HTML/CSS/JS for dynamic interfaces. I excel at translating ideas into
+                        functional designs. Club involvement sharpened my leadership and collaborative skills. I thrive
+                        on tackling complex problems and pushing technological boundaries.</p>
+                    <a href="#contact" class="btn mt-4">Let's Collaborate</a> </div>
                 <div class="gsap-reveal-from-right" data-gsap-delay="0.3">
                     <div
                         class="bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-gray-700 aspect-square max-w-md mx-auto flex items-center justify-center">
-                        <img src="https://via.placeholder.com/400x400/FF7F50/0a0a0a?text=Lochana+R."
-                            alt="Lochana Ranathunga" class="rounded-lg w-full h-full object-cover">
+                        <img src="loch.jpg" alt="Lochana Ranathunga" class="rounded-lg w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -926,80 +1032,100 @@
     </section>
 
     <section id="projects" class="section" style="background-color: rgba(14, 14, 14, 0.6);">
-        <div class="content-wrapper">
-            <h2 class="section-heading gsap-reveal-from-bottom">Featured Projects</h2>
-            <p class="section-subheading gsap-reveal-from-bottom" data-gsap-delay="0.2">A selection of recent work
-                showcasing my passion for interactive development.</p>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="project-card gsap-reveal-scale">
-                    <div class="project-img-container"><img
-                            src="https://via.placeholder.com/600x400/4682B4/0a0a0a?text=Project+One" alt="Project 1"
-                            class="project-img"></div>
-                    <div class="project-content">
-                        <h3>Project Title One</h3>
-                        <p class="text-sm">Brief project description highlighting key features and tech used.</p>
-                        <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4">
-                            <span>Three.js</span><span>GSAP</span><span>Interaction</span> </div>
-                        <div class="project-links"> <a href="#" target="_blank" rel="noopener noreferrer">View Live <svg
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg></a> <a href="#" target="_blank" rel="noopener noreferrer">GitHub <svg fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
-                                    </path>
-                                </svg></a> </div>
-                    </div>
-                </div>
-                <div class="project-card gsap-reveal-scale" data-gsap-delay="0.15">
-                    <div class="project-img-container"><img
-                            src="https://via.placeholder.com/600x400/32CD32/0a0a0a?text=Project+Two" alt="Project 2"
-                            class="project-img"></div>
-                    <div class="project-content">
-                        <h3>Project Title Two</h3>
-                        <p class="text-sm">Brief project description highlighting key features and tech used.</p>
-                        <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4">
-                            <span>GSAP</span><span>ScrollTrigger</span><span>Tailwind</span> </div>
-                        <div class="project-links"> <a href="#" target="_blank" rel="noopener noreferrer">View Live <svg
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg></a> <a href="#" target="_blank" rel="noopener noreferrer">GitHub <svg fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
-                                    </path>
-                                </svg></a> </div>
-                    </div>
-                </div>
-                <div class="project-card gsap-reveal-scale" data-gsap-delay="0.3">
-                    <div class="project-img-container"><img
-                            src="https://via.placeholder.com/600x400/FFD700/0a0a0a?text=Project+Three" alt="Project 3"
-                            class="project-img"></div>
-                    <div class="project-content">
-                        <h3>Project Title Three</h3>
-                        <p class="text-sm">Brief project description highlighting key features and tech used.</p>
-                        <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4">
-                            <span>JavaScript</span><span>UI/UX</span><span>CSS</span> </div>
-                        <div class="project-links"> <a href="#" target="_blank" rel="noopener noreferrer">View Live <svg
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg></a> <a href="#" target="_blank" rel="noopener noreferrer">GitHub <svg fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
-                                    </path>
-                                </svg></a> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+         <div class="content-wrapper"> <h2 class="section-heading gsap-reveal-from-bottom">Featured Projects</h2> <p class="section-subheading gsap-reveal-from-bottom" data-gsap-delay="0.2">A selection of
+                 recent work showcasing my passion for interactive development.</p> <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                 <div class="project-card gsap-reveal-scale"> <div class="project-img-container">
+                         <img src="portfolio web.png" alt="Project 1" class="project-img w-full object-cover"> </div>
+                     <div class="project-content flex flex-col h-full">
+                         <h3>Personal Portfolio</h3>
+                         <p class="text-sm">A sleek, responsive portfolio website designed to showcase projects and
+                             skills. Includes interactive project sections, smooth animations, and contact form
+                             integration. Built with HTML, CSS, JavaScript, and Tailwind CSS for a clean, modern UI</p>
+                         <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center"> <span>html</span><span>css</span><span>js</span>
+                         </div>
+                         <div class="project-links">
+                             <a href="https://rmlkloch.github.io/Portfolio25/" target="_blank"
+                                 rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
+                                     viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                     </path>
+                                 </svg></a>
+                             <a href="https://github.com/rmlkloch/Portfolio25.git" target="_blank"
+                                 rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
+                                     viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
+                                     </path>
+                                 </svg></a>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="project-card gsap-reveal-scale" data-gsap-delay="0.15">
+                     <div class="project-img-container">
+                         <img src="cafe.png" alt="Project 2" class="project-img w-full object-cover">
+                     </div>
+                      <div class="project-content flex flex-col h-full">
+                         <h3>Cafe Full-Stack Website</h3>
+                         <p class="text-sm">A complete, responsive cafe website built for a seamless dining experience.
+                             Features include an interactive menu, online ordering, and contact forms. Developed with
+                             HTML, CSS, JavaScript, and Node.js for dynamic functionality.</p>
+                         <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center"> <span>HTML</span><span>js</span><span>php</span>
+                         </div>
+                         <div class="project-links">
+                             <a href="https://rmlkloch.github.io/coffeeweb/" target="_blank"
+                                 rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
+                                     viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                     </path>
+                                 </svg></a>
+                             <a href="https://github.com/rmlkloch/coffeeweb.git" target="_blank"
+                                 rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
+                                     viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
+                                     </path>
+                                 </svg></a>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="project-card gsap-reveal-scale" data-gsap-delay="0.15">
+                     <div class="project-img-container">
+                         <img src="ecommerce.png" alt="Project 3" class="project-img w-full object-cover"> </div>
+                      <div class="project-content flex flex-col h-full">
+                         <h3>e-commerce frontend</h3>
+                         <p class="text-sm">I craft fully responsive, visually appealing e-commerce websites tailored to
+                             your brand. Using modern frontend tools, I ensure smooth navigation and a seamless shopping
+                             experience.</p>
+                         <div class="project-tags mt-auto flex flex-wrap gap-2 mb-4 justify-center"> <span>next.js</span><span>tailwind</span><span>js</span>
+                         </div>
+                         <div class="project-links">
+                              <a href="https://rmlkloch.github.io/coffeeweb/" target="_blank"
+                                 rel="noopener noreferrer">View Live <svg fill="none" stroke="currentColor"
+                                     viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                     </path>
+                                 </svg></a>
+                             <a href="https://github.com/rmlkloch/coffeeweb.git" target="_blank"
+                                 rel="noopener noreferrer">GitHub <svg fill="none" stroke="currentColor"
+                                     viewBox="0 0 24 24">
+                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22">
+                                     </path>
+                                 </svg></a>
+                         </div>
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+     </section>
+
 
     <section id="skills" class="section">
         <div class="content-wrapper">
@@ -1010,14 +1136,16 @@
                 <div class="skill-list gsap-reveal-from-left">
                     <h3 class="text-2xl font-semibold mb-6 text-white">Core Areas</h3>
                     <div>
-                        <h4>Front-End Development</h4>
-                        <p>HTML5, CSS3, JavaScript (ESNext), Tailwind CSS, Responsive & Adaptive Design, Cross-Browser
-                            Compatibility, Performance Optimization.</p>
+                        <h4>Full-Stack Developmentt</h4>
+                        <p>HTML5, CSS3, JavaScript (ESNext), Tailwind CSS, React.js, Node.js, Express.js, MongoDB, php,
+                            RESTful APIs, Responsive & Adaptive Design, Cross-Browser Compatibility, Performance
+                            Optimization.</p>
                     </div>
                     <div>
-                        <h4>Creative & Interaction</h4>
-                        <p>Three.js (WebGL), GSAP (Animation), ScrollTrigger, Interactive UI/UX, Creative Coding
-                            Concepts, Micro-interactions.</p>
+                        <h4>Windows Application Development</h4>
+                        <p>C# (WinForms/WPF), .NET Framework/.NET Core, XAML (for UI), Event-Driven Programming, MVVM
+                            Architecture,
+                            Database Integration (SQL Server), Backend Logic Implementation.</p>
                     </div>
                     <div>
                         <h4>Tools & Workflow</h4>
@@ -1045,27 +1173,27 @@
                         </div>
                     </div>
                     <div class="skill-bar-container">
-                        <div class="skill-label"><span>Three.js / WebGL</span><span>85%</span></div>
+                        <div class="skill-label"><span>React</span><span>95%</span></div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
+                            <div class="skill-progress" data-width="95"></div>
                         </div>
                     </div>
                     <div class="skill-bar-container">
-                        <div class="skill-label"><span>GSAP Animation</span><span>90%</span></div>
+                        <div class="skill-label"><span>C#</span><span>90%</span></div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="90"></div>
                         </div>
                     </div>
                     <div class="skill-bar-container">
-                        <div class="skill-label"><span>Interaction Design</span><span>88%</span></div>
+                        <div class="skill-label"><span>Python</span><span>93%</span></div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="88"></div>
+                            <div class="skill-progress" data-width="93"></div>
                         </div>
                     </div>
                     <div class="skill-bar-container">
-                        <div class="skill-label"><span>Responsive Design</span><span>98%</span></div>
+                        <div class="skill-label"><span>Flutter</span><span>83%</span></div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="98"></div>
+                            <div class="skill-progress" data-width="83"></div>
                         </div>
                     </div>
                     <div class="skill-bar-container">
@@ -1082,11 +1210,13 @@
                 <div class="tools-container">
                     <span class="tool-tag">HTML5</span> <span class="tool-tag">CSS3</span> <span
                         class="tool-tag">JavaScript (ES6+)</span> <span class="tool-tag">Tailwind CSS</span> <span
-                        class="tool-tag">Three.js</span> <span class="tool-tag">GSAP</span> <span
-                        class="tool-tag">ScrollTrigger</span> <span class="tool-tag">WebGL</span> <span
-                        class="tool-tag">Git</span> <span class="tool-tag">GitHub</span> <span class="tool-tag">npm /
+                        class="tool-tag">C#</span> <span class="tool-tag">Python</span> <span
+                        class="tool-tag">React</span> <span class="tool-tag">SQL</span> <span
+                        class="tool-tag">Git</span> <span class="tool-tag">Flutter</span> <span class="tool-tag">npm /
                         yarn</span> <span class="tool-tag">VS Code</span> <span class="tool-tag">Figma</span> <span
-                        class="tool-tag">Blender (Basic)</span> <span class="tool-tag">Node.js (Basic)</span>
+                        class="tool-tag">Blender (Basic)</span> <span class="tool-tag">Node.js (Basic)</span> <span
+                        class="tool-tag">OpenAI API</span> <span class="tool-tag">NumPy</span> <span
+                        class="tool-tag">Pandas</span> <span class="tool-tag">Google Analytics</span>
                 </div>
             </div>
         </div>
@@ -1108,7 +1238,7 @@
                             </svg></div>
                         <div class="contact-info">
                             <p>Email</p>
-                            <p>lochana.r@example.com</p>
+                            <p>rmlkranathunga@gmail.com</p>
                         </div>
                     </div>
                     <div class="flex items-center mb-8">
@@ -1118,8 +1248,8 @@
                                 </path>
                             </svg></div>
                         <div class="contact-info">
-                            <p>Phone (Optional)</p>
-                            <p>+94 7X XXX XXXX</p>
+                            <p>Phone</p>
+                            <p>+94 77 779 1971</p>
                         </div>
                     </div>
                     <div class="flex items-center mb-8">
@@ -1139,7 +1269,8 @@
                     <div class="gsap-reveal-from-bottom" data-gsap-delay="0.4">
                         <h3 class="follow-heading">Follow Me</h3>
                         <div class="social-icon-links">
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-link"
+                            <a href="https://www.linkedin.com/in/lochana-ranathunga-9972b023a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank" rel="noopener noreferrer" class="social-icon-link"
                                 aria-label="Lochana Ranathunga on LinkedIn"> <svg role="img" viewBox="0 0 24 24"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>LinkedIn</title>
@@ -1147,15 +1278,15 @@
                                         d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z">
                                     </path>
                                 </svg> </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-link"
-                                aria-label="Lochana Ranathunga on Instagram"> <svg role="img" viewBox="0 0 24 24"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <title>Instagram</title>
+                            <a href="https://www.instagram.com/_rmlk_ranathunga_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                target="_blank" rel="noopener noreferrer" class="social-icon-link"
+                                aria-label="Lochana Ranathunga on Instagram"> <svg xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
                                     <path
-                                        d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.06 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.381-.42.419-.82.679-1.38.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.585-.015-4.85-.074c-1.17-.06-1.805-.249-2.227-.413-.562-.217-.96-.477-1.381-.896-.419-.42-.679-.82-8.96-1.381-.164-.422-.36-1.057-.413-2.227-.057-1.266-.07-1.646-.07-4.85s.015-3.585.074-4.85c.06-1.17.249-1.805.413-2.227.217-.562.477-.96.896-1.381.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413 1.266-.057 1.646-.07 4.85-.07zm0 4.86c-3.396 0-6.135 2.741-6.135 6.137 0 3.394 2.739 6.135 6.135 6.135s6.137-2.741 6.137-6.135c0-3.396-2.741-6.137-6.137-6.137zm0 9.898c-2.08 0-3.76-1.681-3.76-3.76 0-2.082 1.68-3.76 3.76-3.76s3.76 1.68 3.76 3.76c0 2.079-1.68 3.76-3.76 3.76zm4.905-9.848c-.439 0-.79.35-.79.79s.35.79.79.79.79-.35.79-.79-.351-.79-.79-.79z">
-                                    </path>
-                                </svg> </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-link"
+                                        d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.88a.88.88 0 1 1 0 1.76.88.88 0 0 1 0-1.76z" />
+                                </svg>
+                                </a> <a href="https://www.facebook.com/share/15bw5Kv9ho/" target="_blank"
+                                rel="noopener noreferrer" class="social-icon-link"
                                 aria-label="Lochana Ranathunga on Facebook"> <svg role="img" viewBox="0 0 24 24"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>Facebook</title>
@@ -1163,7 +1294,8 @@
                                         d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
                                     </path>
                                 </svg> </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-link"
+                            <a href="https://youtube.com/@lochanaranathunga9503?si=Emp5TjLoWcnx8dkK" target="_blank"
+                                rel="noopener noreferrer" class="social-icon-link"
                                 aria-label="Lochana Ranathunga on YouTube"> <svg role="img" viewBox="0 0 24 24"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>YouTube</title>
@@ -1171,9 +1303,9 @@
                                         d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
                                     </path>
                                 </svg> </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-link"
-                                aria-label="Lochana Ranathunga on GitHub"> <svg role="img" viewBox="0 0 24 24"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <a href="https://github.com/rmlkloch" target="_blank" rel="noopener noreferrer"
+                                class="social-icon-link" aria-label="Lochana Ranathunga on GitHub"> <svg role="img"
+                                    viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <title>GitHub</title>
                                     <path
                                         d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.19.694.824.577C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -1182,72 +1314,70 @@
                     </div>
 
                     <div class="mt-10 gsap-reveal-from-bottom" data-gsap-delay="0.6">
-                        <a href="YOUR_FIVERR_URL_HERE" target="_blank" rel="noopener noreferrer"
-                           class="btn inline-block w-full sm:w-auto text-center text-base py-3 transform hover:scale-105"> Hire Me on Fiverr! </a>
+                        <a href="https://www.fiverr.com/tourforyourpc/" target="_blank" rel="noopener noreferrer"
+                            class="btn inline-block w-full sm:w-auto text-center text-base py-3 transform hover:scale-105"> Hire Me on Fiverr! </a>
                     </div>
 
                 </div>
                 <div class="contact-form-container gsap-reveal-from-right" data-gsap-delay="0.3">
                     <h3 class="text-xl lg:text-2xl font-semibold mb-8 text-white">Send a Message</h3>
                     <form action="https://formsubmit.co/rmlkranathunga@gmail.com" method="POST">
-                        <!-- Honeypot field (anti-spam) -->
                         <input type="text" name="_honey" style="display:none">
-                        
-                        <!-- Disable CAPTCHA -->
+
                         <input type="hidden" name="_captcha" value="false">
-                        
-                        <!-- Redirect to thank you page -->
-                        <input type="hidden" name="_next" value="https://rmlkloch.github.io/lochportnew/thank-you.html">
-                
-                        <div class="mb-5">
+
+                        <input type="hidden" name="_next" value="https://rmlkloch.github.io/lochportnew/thank-you.html"> <div class="mb-5">
                             <label for="contact-name" class="block text-sm font-medium mb-2 text-gray-400">Name</label>
-                            <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your Name" required>
-                        </div>
+                            <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your Name"
+                                required> </div>
                         <div class="mb-5">
-                            <label for="contact-email" class="block text-sm font-medium mb-2 text-gray-400">Email</label>
-                            <input type="email" id="contact-email" name="email" class="form-input" placeholder="Your Email" required>
-                        </div>
+                            <label for="contact-email"
+                                class="block text-sm font-medium mb-2 text-gray-400">Email</label>
+                            <input type="email" id="contact-email" name="email" class="form-input"
+                                placeholder="Your Email" required> </div>
                         <div class="mb-5">
-                            <label for="contact-message" class="block text-sm font-medium mb-2 text-gray-400">Message</label>
-                            <textarea id="contact-message" name="message" rows="5" class="form-textarea" placeholder="How can I help?" required></textarea>
-                        </div>
-                        <button type="submit" class="btn w-full">Send Message</button>
-                    </form>
+                            <label for="contact-message"
+                                class="block text-sm font-medium mb-2 text-gray-400">Message</label>
+                            <textarea id="contact-message" name="message" rows="5" class="form-textarea"
+                                placeholder="How can I help?" required></textarea> </div>
+                        <button type="submit" class="btn w-full">Send Message</button> </form>
                     <div id="form-status-message" class="mt-4 text-center"></div>
                 </div>
-                
+
             </div>
         </div>
     </section>
 
     <footer class="text-center">
         <div class="content-wrapper">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p>&copy; <span id="current-year"></span> Lochana Ranathunga. All Rights Reserved.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <p>© <span id="current-year"></span> Lochana Ranathunga. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
     <script>
-        // Wrap everything in DOMContentLoaded
+        // ORIGINAL SCRIPT LOGIC WRAPPED IN DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
             console.log("DOM fully loaded and parsed");
 
-            // --- Elements ---
+            // --- Elements (Original Selection Logic) ---
             const loader = document.getElementById('loader');
             const loaderProgress = document.getElementById('loader-progress');
             const navbar = document.getElementById('navbar');
             const mobileMenuContainer = document.getElementById('mobile-menu-container');
             const menuToggle = document.getElementById('menu-toggle');
             const closeMenuBtn = document.getElementById('close-menu-btn');
+            // Select mobile links *within* the listener scope if needed, or ensure they exist
             const mobileMenuLinks = mobileMenuContainer ? mobileMenuContainer.querySelectorAll('a.nav-link') : [];
             const navLinks = navbar ? navbar.querySelectorAll('.hidden.md\\:flex a.nav-link') : [];
 
-            // --- Lenis Smooth Scroll Initialization ---
+            // --- Lenis Smooth Scroll Initialization (Original) ---
             let lenis = null;
             if (typeof Lenis !== 'undefined') {
                 try {
@@ -1258,14 +1388,14 @@
                 } catch (e) { console.error("Failed to initialize Lenis:", e); }
             } else { console.warn("Lenis library not loaded!"); }
 
-            // --- Loader Logic ---
+            // --- Loader Logic (Original) ---
             let progress = 0;
             let progressInterval = null;
-            const totalLoadTime = 2800; // **** Increased Loading time to 2.8 seconds ****
+            const totalLoadTime = 2800;
 
             function updateLoaderProgress() {
                 if (!loaderProgress) return;
-                const intervalTime = 25; // Update slightly less frequently
+                const intervalTime = 25;
                 const increment = (100 / (totalLoadTime / intervalTime));
                 progress += increment;
                 loaderProgress.style.width = `${Math.min(progress, 100)}%`;
@@ -1273,8 +1403,7 @@
                 if (progress >= 100) {
                     clearInterval(progressInterval);
                     console.log("Loader progress visually complete.");
-                    // Trigger fade out slightly after 100% is visually reached
-                    setTimeout(hideLoader, 200); // Small delay before hiding
+                    setTimeout(hideLoader, 200);
                 }
             }
 
@@ -1283,61 +1412,111 @@
                     clearInterval(progressInterval);
                     progress = 0;
                     loaderProgress.style.width = '0%';
-                    const intervalTime = 25; // ms
+                    const intervalTime = 25;
                     progressInterval = setInterval(updateLoaderProgress, intervalTime);
                     console.log("Loader simulation started (Duration: " + totalLoadTime + "ms).");
                 } else { console.warn("Loader progress bar element not found."); }
             }
 
             function hideLoader() {
-                if (!loader || loader.style.opacity === '0') return; // Prevent multiple calls
-                clearInterval(progressInterval); // Ensure interval is stopped
-                if (loaderProgress && progress < 100) loaderProgress.style.width = '100%'; // Force 100%
+                if (!loader || loader.style.opacity === '0') return;
+                clearInterval(progressInterval);
+                if (loaderProgress && progress < 100) loaderProgress.style.width = '100%';
 
                 console.log("Hiding loader overlay...");
                 loader.classList.add('fade-out');
-                // The fade-out duration is set in CSS (1s), the visibility delay matches it
                 setTimeout(() => {
                     if (loader) loader.style.display = 'none';
                     document.body.style.overflowY = 'auto';
                     console.log("Loader hidden, initializing page scripts...");
-                    // Initialize scripts AFTER fade out animation completes (1s + slight buffer)
-                    gsap.delayedCall(0.1, initializePageScripts);
-                }, 1500); // Match CSS fadeout (1s) + delay (0.5s)
+                    gsap.delayedCall(0.1, initializePageScripts); // Call original init
+                }, 1500);
             }
 
+             // --- ADDED: Custom Cursor Logic ---
+             function initCustomCursor() {
+                const customCursor = document.getElementById('custom-cursor');
+                const cursorAura = document.getElementById('cursor-aura');
+
+                if (!customCursor || !cursorAura) {
+                    console.warn("Custom cursor elements not found.");
+                    document.body.style.cursor = 'auto'; // Restore default if elements missing
+                    // Select interactive elements based on original HTML structure if needed for revert
+                    document.querySelectorAll('a, button, .btn, .project-card, .social-icon-link, .navbar-brand, input, textarea, #menu-toggle, #close-menu-btn')
+                         .forEach(el => el.style.cursor = 'revert');
+                    return;
+                }
+
+                // Basic touch check
+                if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || matchMedia('(pointer:coarse)').matches) {
+                    console.log("Touch/Coarse pointer detected, hiding custom cursor.");
+                    customCursor.style.display = 'none'; cursorAura.style.display = 'none';
+                    // CSS should handle restoring default cursors via @media query
+                    return;
+                }
+
+                console.log("Initializing Custom Cursor script...");
+                let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0, auraX = 0, auraY = 0;
+                const speed = 0.15; const auraSpeed = 0.1;
+
+                window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
+
+                function updateCursor() {
+                    cursorX += (mouseX - cursorX) * speed; cursorY += (mouseY - cursorY) * speed;
+                    auraX += (mouseX - auraX) * auraSpeed; auraY += (mouseY - auraY) * auraSpeed;
+                    // Use translate3d for potential performance improvement
+                    customCursor.style.transform = `translate3d(${cursorX - 5}px, ${cursorY - 5}px, 0)`; // Offset to center 10x10 dot
+                    cursorAura.style.transform = `translate3d(${auraX - 20}px, ${auraY - 20}px, 0)`; // Offset to center 40x40 aura
+                    requestAnimationFrame(updateCursor);
+                }
+                requestAnimationFrame(updateCursor);
+
+                // Original structure might need specific targets if .cursor-target class wasn't used
+                 const cursorTargets = document.querySelectorAll('a[href], button, .btn, input, textarea, .project-card, .social-icon-link, .navbar-brand, #menu-toggle, #close-menu-btn'); // Select potentially interactive elements
+                cursorTargets.forEach(target => {
+                    target.addEventListener('mouseenter', () => { document.body.classList.add('cursor-hover'); });
+                    target.addEventListener('mouseleave', () => { document.body.classList.remove('cursor-hover'); });
+                });
+                 console.log(`Custom cursor hover listeners added.`);
+            }
+
+
+            // --- Original initializePageScripts function ---
+            // All original initializations + the call to initCustomCursor
             function initializePageScripts() {
                 console.log("Running initializePageScripts...");
                 try {
-                    initNavbarLogic();
-                    initScrollSpy();
-                    animateHeroText();
-                    initScrollBasedAnimations();
-                    animateSkillBars();
-                    initThreeJsScene();
+                    initNavbarLogic(); // Original Navbar logic
+                    initScrollSpy();   // Original ScrollSpy
+                    animateHeroText(); // Original Hero Animation
+                    initScrollBasedAnimations(); // Original Scroll Animations
+                    animateSkillBars(); // Original Skill Bars
+                    initThreeJsScene(); // Original Three.js
+                    initCustomCursor(); // *** ADDED CALL to initialize custom cursor ***
+                    handleContactFormStatus(); // Original Form Status Handling
                 } catch (e) { console.error("Error during page script initialization:", e); }
                 console.log("Page initialization attempts complete.");
             }
 
+
+            // --- Original Loader Check ---
             if (loader) {
                 document.body.style.overflowY = 'hidden';
                 startLoaderSimulation();
-                // We rely on the progress interval calling hideLoader now
-                // Fallback timeout remains just in case
                 setTimeout(() => {
                     if (loader && loader.style.display !== 'none') {
                         console.warn("Loader fallback timeout triggered.");
                         hideLoader();
                     }
                 }, totalLoadTime + 2000); // Extended fallback
-
             } else {
                 console.log("No loader found, initializing directly.");
                 document.body.style.overflowY = 'auto';
-                setTimeout(initializePageScripts, 100);
+                // Use requestAnimationFrame for potentially smoother start after render
+                 requestAnimationFrame(initializePageScripts);
             }
 
-            // --- GSAP / ScrollTrigger Setup ---
+            // --- GSAP / ScrollTrigger Setup (Original) ---
             function initGsap() {
                 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                     gsap.registerPlugin(ScrollTrigger);
@@ -1354,13 +1533,14 @@
             }
             initGsap();
 
-            // --- Navbar Logic ---
+            // --- Navbar Logic (Original - Including Mobile Menu) ---
             function initNavbarLogic() {
                 if (navbar && typeof ScrollTrigger !== 'undefined') {
                     ScrollTrigger.create({ trigger: document.body, start: 'top -80', end: 99999, toggleClass: { className: 'scrolled', targets: navbar } });
                     console.log("Navbar scroll effect initialized.");
                 } else { console.error("Navbar element or ScrollTrigger not found for scroll effect."); }
 
+                // Original Mobile Menu Toggle Logic
                 if (menuToggle && mobileMenuContainer && closeMenuBtn) {
                     console.log("Initializing mobile menu toggle...");
                     menuToggle.addEventListener('click', () => {
@@ -1369,41 +1549,59 @@
                         if (mobileMenuContainer.classList.contains('open')) { if (lenis) lenis.stop(); }
                         else { if (lenis) lenis.start(); }
                     });
-                    closeMenuBtn.addEventListener('click', () => { console.log("Close button clicked!"); mobileMenuContainer.classList.remove('open'); if (lenis) lenis.start(); });
-                    if (mobileMenuLinks.length > 0) { mobileMenuLinks.forEach(link => { link.addEventListener('click', () => { mobileMenuContainer.classList.remove('open'); if (lenis) lenis.start(); }); }); }
+                    closeMenuBtn.addEventListener('click', () => {
+                        console.log("Close button clicked!");
+                        mobileMenuContainer.classList.remove('open');
+                        if (lenis) lenis.start();
+                    });
+                    const currentMobileLinks = mobileMenuContainer.querySelectorAll('a.nav-link'); // Ensure links are selected here
+                    if (currentMobileLinks.length > 0) {
+                         currentMobileLinks.forEach(link => {
+                            link.addEventListener('click', () => {
+                                mobileMenuContainer.classList.remove('open');
+                                if (lenis) lenis.start();
+                            });
+                         });
+                    }
                     console.log("Mobile menu listeners attached.");
                 } else { console.error("Mobile menu elements not found:", { menuToggle, mobileMenuContainer, closeMenuBtn }); }
             }
 
-            // --- ScrollSpy ---
+            // --- ScrollSpy (Original) ---
             function initScrollSpy() {
                 if (typeof ScrollTrigger === 'undefined') return;
                 console.log("Initializing ScrollSpy...");
                 const sections = document.querySelectorAll('section[id]');
-                if (sections.length === 0 || (navLinks.length === 0 && mobileMenuLinks.length === 0)) { console.warn("Scrollspy: Missing sections or links."); return; }
-                sections.forEach(section => { ScrollTrigger.create({ trigger: section, start: 'top center+=20%', end: 'bottom center-=20%', onToggle: (self) => { if (self.isActive) setActiveLink(section.id); } }); });
+                const currentNavLinks = navbar ? navbar.querySelectorAll('.hidden.md\\:flex a.nav-link') : []; // Reselect links
+                const currentMobileLinks = mobileMenuContainer ? mobileMenuContainer.querySelectorAll('a.nav-link') : [];
+
+                if (sections.length === 0 || (currentNavLinks.length === 0 && currentMobileLinks.length === 0)) { console.warn("Scrollspy: Missing sections or links."); return; }
+                sections.forEach(section => { ScrollTrigger.create({ trigger: section, start: 'top center+=20%', end: 'bottom center-=20%', onToggle: (self) => { if (self.isActive) setActiveLink(section.id, currentNavLinks, currentMobileLinks); } }); }); // Pass links to setActiveLink
                 console.log(`Scrollspy initialized for ${sections.length} sections.`);
                 setTimeout(() => { /* ... set initial active link ... */
                     let currentSection = ''; let minTop = window.innerHeight;
                     sections.forEach(section => { const rect = section.getBoundingClientRect(); if (rect.top < minTop && rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) { minTop = rect.top; currentSection = section.id; } });
-                    if (!currentSection && sections.length > 0) currentSection = sections[0].id;
-                    setActiveLink(currentSection); console.log(`Initial active section set to: ${currentSection || 'none'}`);
+                    if (!currentSection && sections.length > 0 && window.scrollY < window.innerHeight * 0.5) currentSection = sections[0].id; // Default to first if near top
+                    setActiveLink(currentSection, currentNavLinks, currentMobileLinks); // Pass links
+                    console.log(`Initial active section set to: ${currentSection || 'none'}`);
                 }, 300);
             }
-            function setActiveLink(sectionId) {
-                const targetHref = `#${sectionId}`;
-                navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === targetHref); });
-                mobileMenuLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === targetHref); });
-            }
+            // Modified setActiveLink to accept link lists
+             function setActiveLink(sectionId, desktopLinks, mobileLinks) {
+                 const targetHref = `#${sectionId}`;
+                 desktopLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === targetHref); });
+                 mobileLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === targetHref); });
+             }
 
-            // --- Hero Text Animation ---
+
+            // --- Hero Text Animation (Original) ---
             function animateHeroText() {
                 if (typeof gsap === 'undefined') return;
                 gsap.utils.toArray('.hero .gsap-reveal-from-bottom').forEach((elem, index) => { gsap.to(elem, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: elem.dataset.gsapDelay ? parseFloat(elem.dataset.gsapDelay) : index * 0.15 }); });
                 console.log("Hero text animated.");
             }
 
-            // --- General Scroll-Based Animations ---
+            // --- General Scroll-Based Animations (Original) ---
             function initScrollBasedAnimations() {
                 if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
                 gsap.utils.toArray('.section-heading').forEach(heading => { ScrollTrigger.create({ trigger: heading, start: 'top 85%', onEnter: () => heading.classList.add('in-view'), once: true }); });
@@ -1414,25 +1612,37 @@
                 console.log("Scroll animations initialized.");
             }
 
-            // --- Animate Skill Bars ---
-            function animateSkillBars() {
-                if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-                const skillProgressBars = document.querySelectorAll('.skill-progress');
-                if (skillProgressBars.length === 0) { console.warn("No skill bars found."); return; }
-                skillProgressBars.forEach(bar => { const targetWidth = bar.dataset.width || '0'; gsap.to(bar, { width: `${targetWidth}%`, duration: 1.8, ease: 'cubic-bezier(0.19, 1, 0.22, 1)', scrollTrigger: { trigger: bar.closest('.skill-bar-container'), start: "top 85%", once: true } }); });
-                console.log("Skill bar animations initialized.");
-            }
+            // --- Animate Skill Bars (Original) ---
+             function animateSkillBars() {
+                 if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+                 const skillProgressBars = document.querySelectorAll('.skill-progress');
+                 if (skillProgressBars.length === 0) { console.warn("No skill bars found."); return; }
+                 skillProgressBars.forEach(bar => {
+                     const targetWidth = bar.dataset.width || '0';
+                     gsap.to(bar, {
+                         width: `${targetWidth}%`,
+                         duration: 1.8,
+                         ease: 'cubic-bezier(0.19, 1, 0.22, 1)',
+                         scrollTrigger: {
+                             trigger: bar.closest('.skill-bar-container'),
+                             start: "top 85%",
+                             once: true
+                         }
+                     });
+                 });
+                 console.log("Skill bar animations initialized.");
+             }
 
             // --- Original Three.js Particle Scene ---
-            function initThreeJsScene() {
-                if (typeof THREE === 'undefined') { console.error("THREE library not loaded!"); return; }
-                console.log("Attempting to initialize Three.js scene (original particle system)...");
-                const container = document.getElementById('three-canvas-container');
-                if (!container) { console.error("Three.js container '#three-canvas-container' not found!"); return; }
-                let canvas = container.querySelector('canvas');
-                if (canvas) { console.log("Removing existing canvas before re-init."); container.removeChild(canvas); }
+             function initThreeJsScene() {
+                 if (typeof THREE === 'undefined') { console.error("THREE library not loaded!"); return; }
+                 console.log("Attempting to initialize Three.js scene (original particle system)...");
+                 const container = document.getElementById('three-canvas-container');
+                 if (!container) { console.error("Three.js container '#three-canvas-container' not found!"); return; }
+                 let canvas = container.querySelector('canvas');
+                 if (canvas) { console.log("Removing existing canvas before re-init."); container.removeChild(canvas); }
 
-                try {
+                 try {
                     const scene = new THREE.Scene();
                     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                     camera.position.z = 50;
@@ -1444,20 +1654,29 @@
                     const particlesGeometry = new THREE.BufferGeometry();
                     const particlesCount = 1500; // Keep original count
                     const posArray = new Float32Array(particlesCount * 3);
-                    for (let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 100; }
+                    const spread = 100; // Original spread? Check original if possible
+                    for (let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * spread; } // Use original spread
                     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-                    const particlesMaterial = new THREE.PointsMaterial({ size: 0.19, color: 0xc48f8f, transparent: true });
+                    const particlesMaterial = new THREE.PointsMaterial({
+                         size: 0.19, // Original size
+                         color: 0xc48f8f, // Original color
+                         transparent: true,
+                         // opacity: 0.8, // Opacity wasn't in original, removed
+                         // blending: THREE.AdditiveBlending // Blending wasn't in original, removed
+                         });
                     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
                     scene.add(particlesMesh);
 
-                    const mouse = { x: 0, y: 0 };
+                    const mouse = { x: 0, y: 0 }; // Original mouse object structure
                     const handleMouseMove = (event) => { mouse.x = (event.clientX / window.innerWidth) * 2 - 1; mouse.y = -(event.clientY / window.innerHeight) * 2 + 1; };
                     document.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-                    let animationFrameId = null; const rotationSpeed = 0.001;
+                    let animationFrameId = null; const rotationSpeed = 0.001; // Original speed
                     function animate() {
                         animationFrameId = requestAnimationFrame(animate);
-                        particlesMesh.rotation.x += rotationSpeed * 0.8; particlesMesh.rotation.y += rotationSpeed * 0.5;
+                        particlesMesh.rotation.x += rotationSpeed * 0.8; // Original rotation logic
+                        particlesMesh.rotation.y += rotationSpeed * 0.5;
+                        // Original mouse follow logic
                         particlesMesh.rotation.y += (mouse.x * 0.02 - particlesMesh.rotation.y) * 0.02;
                         particlesMesh.rotation.x += (mouse.y * 0.02 - particlesMesh.rotation.x) * 0.02;
                         renderer.render(scene, camera);
@@ -1466,15 +1685,16 @@
                     window.addEventListener('resize', onWindowResize);
                     animate();
                     console.log("Original Three.js particle system initialized successfully.");
-                } catch (error) { console.error("Error initializing Three.js:", error); if (container) container.style.display = 'none'; }
-            }
+                 } catch (error) { console.error("Error initializing Three.js:", error); if (container) container.style.display = 'none'; }
+             }
 
-            // --- Footer Current Year ---
+
+            // --- Footer Current Year (Original) ---
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
 
-            // --- Contact Form Status Handling ---
+            // --- Contact Form Status Handling (Original - Slightly improved URL check) ---
             function handleContactFormStatus() {
                 const formStatusDiv = document.getElementById('form-status-message');
                 if (!formStatusDiv) {
@@ -1483,23 +1703,27 @@
                 }
 
                 const urlParams = new URLSearchParams(window.location.search);
-                const status = urlParams.get('status');
-                const msg = urlParams.get('msg'); // Get encoded message
+                 // Check for a specific parameter potentially added by formsubmit or previous redirect logic
+                 const status = urlParams.get('form_status') || urlParams.get('status'); // Check common params
+                 const msg = urlParams.get('msg');
 
-                let messageText = '';
-                let messageClass = '';
+                 let messageText = '';
+                 let messageClass = '';
 
-                if (status === 'success') {
-                    messageText = 'Message sent successfully! Thank you.';
-                    messageClass = 'text-green-500';
-                } else if (status === 'error') {
-                    // Decode the URL encoded message
-                    messageText = msg ? decodeURIComponent(msg.replace(/\+/g, ' ')) : 'An unexpected error occurred.';
-                    messageClass = 'text-red-500';
-                } else if (status === 'validation_error') {
-                    messageText = msg ? decodeURIComponent(msg.replace(/\+/g, ' ')) : 'Please check the form fields.';
-                    messageClass = 'text-yellow-500';
-                }
+                 // Check if the current URL *is* the thank you page URL from the form redirect
+                 // This is a less reliable check as params might be added for other reasons.
+                 const expectedThankYouPath = "/lochportnew/thank-you.html"; // Adjust if needed
+                 if (window.location.pathname.endsWith(expectedThankYouPath) || status === 'success') {
+                     messageText = 'Message sent successfully! Thank you.';
+                     messageClass = 'text-green-400'; // Use a visible green
+                 } else if (status === 'error') {
+                     messageText = msg ? decodeURIComponent(msg.replace(/\+/g, ' ')) : 'An unexpected error occurred.';
+                     messageClass = 'text-red-500';
+                 } else if (status === 'validation_error') {
+                     messageText = msg ? decodeURIComponent(msg.replace(/\+/g, ' ')) : 'Please check the form fields.';
+                     messageClass = 'text-yellow-500';
+                 }
+
 
                 if (messageText) {
                     formStatusDiv.textContent = messageText;
@@ -1510,7 +1734,7 @@
                         formStatusDiv.textContent = '';
                         formStatusDiv.className = 'mt-4 text-center';
                         if (window.history.replaceState) {
-                            // Keep hash for scroll position
+                            // Keep hash for scroll position, remove query params
                             const cleanURL = window.location.pathname + window.location.hash;
                             window.history.replaceState({ path: cleanURL }, '', cleanURL);
                         }
@@ -1518,16 +1742,10 @@
                 }
             }
 
-            // Call this within initializePageScripts or after it
-            // Ensure it's called AFTER the DOM is ready and other initializations might have occurred
-            if (document.readyState === 'complete') {
-                handleContactFormStatus();
-            } else {
-                window.addEventListener('load', handleContactFormStatus); // Fallback to window.load
-            }
+             // Call form status handling (ensure it's called appropriately)
+             // Called within initializePageScripts
 
         }); // End DOMContentLoaded
-    </script>
     </script>
 
 </body>

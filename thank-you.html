@@ -1,26 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Thank You</title>
-  <style>
-    body {
-      background-color: #0f172a;
-      color: white;
-      font-family: sans-serif;
-      text-align: center;
-      padding: 5rem 1rem;
-    }
-    a {
-      color: #60a5fa;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Lochana Ranathunga</title>
+    <link rel="icon" type="image/x-icon" href="logo.png"> <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-hue: 14;
+            --secondary-hue: 44;
+            --primary-color: hsl(var(--primary-hue), 100%, 68%);
+            --secondary-color: hsl(var(--secondary-hue), 98%, 73%);
+            --background-color: #0a0a0a;
+            --text-color: #d1d1d1;
+            --text-muted-color: #888888;
+            --card-bg: #131313;
+            --border-color: #2a2a2a;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .thank-you-card {
+             background-color: rgba(19, 19, 19, 0.7); /* Use card-bg with alpha */
+             backdrop-filter: blur(10px);
+             -webkit-backdrop-filter: blur(10px);
+             border: 1px solid var(--border-color);
+        }
+        .icon-checkmark {
+            color: var(--primary-color);
+            filter: drop-shadow(0 0 8px hsla(var(--primary-hue), 100%, 68%, 0.5));
+        }
+        .link-back {
+            color: var(--secondary-color);
+            transition: color 0.3s ease, letter-spacing 0.3s ease;
+        }
+        .link-back:hover {
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
-<body>
-  <h1>Thank you for your message! ✅</h1>
-  <p>I’ll get back to you as soon as possible.</p>
-  <p><a href="index.html">← Back to Home</a></p>
+<body class="antialiased">
+
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="thank-you-card rounded-xl shadow-2xl p-8 sm:p-12 text-center max-w-md w-full">
+            <svg class="icon-checkmark w-16 h-16 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+
+            <h1 class="text-3xl sm:text-4xl font-bold mb-4 text-white">Thank You!</h1>
+            <p class="text-lg sm:text-xl mb-8 text-gray-300">Your message has been sent successfully. I appreciate you reaching out and will get back to you as soon as possible.</p>
+            <a href="index.html" class="link-back font-semibold text-lg inline-flex items-center group">
+                <svg class="w-5 h-5 mr-2 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </div>
+
 </body>
 </html>
